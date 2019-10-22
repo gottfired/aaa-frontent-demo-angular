@@ -10,11 +10,11 @@ export class NavigationPagesService {
   pages = [
     {
       link: '/',
-      title: 'Home'
+      title: 'nav.home'
     },
     {
       link: '/feed',
-      title: 'Feed'
+      title: 'nav.feed'
     }
   ];
 }
