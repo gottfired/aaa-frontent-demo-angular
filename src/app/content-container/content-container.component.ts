@@ -9,7 +9,7 @@ import { NavigationPagesService } from '../navigation-pages.service';
 export class ContentContainerComponent implements OnInit {
 
   constructor(
-    public navigationPages: NavigationPagesService
+    public navigationPages: NavigationPagesService,
   ) {
   }
 

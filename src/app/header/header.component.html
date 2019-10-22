@@ -3,7 +3,7 @@
         <button mat-icon-button class="burgerMenu" (click)="onClick()">
             <mat-icon>menu</mat-icon>
         </button>
-        <div style="flex:1;" translate>common.welcome</div>
+        <div style="flex:1;">{{title}}</div>
         <div *ngFor="let page of navigationPages.pages">
             <a class="headerLink" routerLink="{{page.link}}" translate>{{page.title}}</a>
         </div>
