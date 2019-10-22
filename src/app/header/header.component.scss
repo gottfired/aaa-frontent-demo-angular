@@ -8,6 +8,7 @@
     display: flex;
     width: 100%;
     padding-right: 16px;
+    align-items: center;
 }
 
 a {
@@ -15,4 +16,21 @@ a {
     text-decoration: none;
     font-size: 24px;
     margin-left: 32px;
+    display: none;
+}
+
+.burgerMenu {
+    display: block;
+    margin-right: 8px;
+}
+
+
+@media only screen and (min-width: 800px) {
+    .burgerMenu {
+        display: none;
+    }
+    
+    a {
+        display: block;
+    }
 }
