@@ -11,7 +11,8 @@ export class MainComponent implements OnInit {
 
   constructor() { }
 
-  incrementTimer() {
+  incrementTimer = () => {
+    // console.log('this =', this);
     this.secondsSinceStart++;
     setTimeout(this.incrementTimer, 1000);
   }
