@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FeedComponent } from './feed/feed.component';
 import { MainComponent } from './main/main.component';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './material/material.module';
 
 
 @NgModule({
