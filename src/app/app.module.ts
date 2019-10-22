@@ -8,6 +8,7 @@ import { MainComponent } from './main/main.component';
 import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ContentContainerComponent } from './content-container/content-container.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FeedComponent,
     MainComponent,
     HeaderComponent,
+    ContentContainerComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,13 @@
+<mat-sidenav-container style="background: transparent">
+    <mat-sidenav #sidenav [mode]="'over'" [fixedInViewport]="true">
+        <div *ngFor="let page of pages" style="padding: 24px;">
+            <a class="burgerLink" routerLink="{{page.link}}">{{page.title}}</a>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-header (toggleSidebar)="sidenav.toggle()"></app-header>
+        <div class="contentContainer">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
