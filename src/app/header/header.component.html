@@ -1,10 +1,19 @@
 <mat-toolbar class="navbar">
     <div class="container">
-        <button mat-icon-button class="burgerMenu">
+        <button mat-icon-button class="burgerMenu" (click)="sidenav.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
         <div style="flex:1;">Welcome!</div>
-        <a routerLink="/">Home</a>
-        <a routerLink="/feed">Feed</a>
+        <div *ngFor="let page of pages">
+            <a class="headerLink" routerLink="{{page.link}}">{{page.title}}</a>
+        </div>
     </div>
 </mat-toolbar>
+
+<mat-sidenav-container class="burgerMenu">
+    <mat-sidenav #sidenav [mode]="'over'" [fixedInViewport]="true" fixedTopGap="64">
+        <div *ngFor="let page of pages" style="padding: 24px;">
+            <a class="burgerLink" routerLink="{{page.link}}">{{page.title}}</a>
+        </div>
+    </mat-sidenav>
+</mat-sidenav-container>

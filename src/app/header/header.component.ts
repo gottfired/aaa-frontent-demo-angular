@@ -9,6 +9,17 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
+  get pages() {
+    return [{
+      link: '/',
+      title: 'Home'
+    },
+    {
+      link: '/feed',
+      title: 'Feed'
+    }];
+  }
+
   ngOnInit() {
   }
 

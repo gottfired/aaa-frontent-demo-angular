@@ -2,6 +2,7 @@
   background: #a33;
   color: white;
   font-size: 33px;
+  height: 64px;
 }
 
 .container {
@@ -11,12 +12,18 @@
     align-items: center;
 }
 
-a {
+a.headerLink {
     color: white;
     text-decoration: none;
     font-size: 24px;
     margin-left: 32px;
     display: none;
+}
+
+a.burgerLink {
+    color: #a33;
+    text-decoration: none;
+    font-size: 24px;
 }
 
 .burgerMenu {
@@ -30,7 +37,7 @@ a {
         display: none;
     }
     
-    a {
+    a.headerLink {
         display: block;
     }
 }
