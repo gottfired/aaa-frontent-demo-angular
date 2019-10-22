@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+  secondsSinceStart = 0;
+
   constructor() { }
 
+  incrementTimer() {
+    this.secondsSinceStart++;
+    setTimeout(this.incrementTimer, 1000);
+  }
+
   ngOnInit() {
+    this.incrementTimer();
   }
 
 }
