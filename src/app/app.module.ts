@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FeedComponent } from './feed/feed.component';
 import { MainComponent } from './main/main.component';
 import { MaterialModule } from './material/material.module';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { MaterialModule } from './material/material.module';
     AppComponent,
     FeedComponent,
     MainComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
