@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { NavigationPagesService } from '../navigation-pages.service';
 
 @Component({
   selector: 'app-header',
@@ -7,20 +8,11 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public navigationPages: NavigationPagesService
+  ) { }
 
   @Output() toggleSidebar: EventEmitter<any> = new EventEmitter();
-
-  get pages() {
-    return [{
-      link: '/',
-      title: 'Home'
-    },
-    {
-      link: '/feed',
-      title: 'Feed'
-    }];
-  }
 
   ngOnInit() {
   }

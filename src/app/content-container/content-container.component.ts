@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationPagesService } from '../navigation-pages.service';
 
 @Component({
   selector: 'app-content-container',
@@ -7,20 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentContainerComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(
+    public navigationPages: NavigationPagesService
+  ) {
   }
 
-  get pages() {
-    return [{
-      link: '/',
-      title: 'Home'
-    },
-    {
-      link: '/feed',
-      title: 'Feed'
-    }];
+  ngOnInit() {
   }
 
 }
