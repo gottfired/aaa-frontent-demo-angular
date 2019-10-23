@@ -1,5 +1,8 @@
 {
     "common.welcome": "Willkommen",
     "nav.home": "Home",
-    "nav.beers": "Bier-Liste"
+    "nav.beers": "Bier-Liste",
+    "nav.beer": "Bier-Details",
+    "error.pageNotFound.title": "404 ...",
+    "error.pageNotFound.description": "Tut mir leid, die Seite existiert nicht"
 }

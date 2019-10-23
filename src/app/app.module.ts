@@ -13,6 +13,8 @@ import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { MaterialModule } from './material/material.module';
 import { BeerListComponent } from './beer-list/beer-list.component';
+import { BeerDetailComponent } from './beer-detail/beer-detail.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -29,6 +31,8 @@ registerLocaleData(localeDe, 'de');
     HeaderComponent,
     ContentContainerComponent,
     BeerListComponent,
+    BeerDetailComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

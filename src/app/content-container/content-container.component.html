@@ -1,6 +1,6 @@
 <mat-sidenav-container style="background: transparent">
     <mat-sidenav #sidenav [mode]="'over'" [fixedInViewport]="true">
-        <div *ngFor="let page of navigationPages.pages" style="padding: 24px;">
+        <div *ngFor="let page of navigationPages.publicPages" style="padding: 24px;">
             <a class="burgerLink" routerLink="{{page.link}}" translate>{{page.title}}</a>
         </div>
     </mat-sidenav>

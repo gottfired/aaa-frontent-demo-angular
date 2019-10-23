@@ -10,11 +10,22 @@ export class NavigationPagesService {
   pages = [
     {
       link: '/',
-      title: 'nav.home'
+      title: 'nav.home',
+      show: true,
     },
     {
       link: '/beers',
-      title: 'nav.beers'
+      title: 'nav.beers',
+      show: true,
+    },
+    {
+      link: '/beer',
+      title: 'nav.beer',
+      show: false,
     }
   ];
+
+  get publicPages() {
+    return this.pages.filter(p => p.show);
+  }
 }

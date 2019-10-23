@@ -27,7 +27,8 @@ export class HeaderComponent implements OnInit {
   }
 
   get title() {
-    const found = this.navigationPages.pages.find((page) => page.link === this.router.url);
-    return found ? this.translateService.instant(found.title) : 'unknown';
+    const baseUrl = `/${this.router.url.split('/')[1]}`;
+    const found = this.navigationPages.pages.find((page) => page.link === baseUrl);
+    return found ? this.translateService.instant(found.title) : this.translateService.instant('error.pageNotFound.title');
   }
 }
