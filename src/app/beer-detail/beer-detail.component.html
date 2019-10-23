@@ -1,13 +1,25 @@
 <mat-card>
-    <div *ngIf="beersService.selectedBeer" class="header">
-        <div class="avatar">
-            <img class="avatar" src="{{imageUrl}}" />
+    <div *ngIf="beersService.selectedBeer">
+        <div class="header">
+            <div class="avatar">
+                <img class="avatar" src="{{imageUrl}}" />
+            </div>
+
+            <div>
+                <h1>{{name}}</h1>
+                <h2>{{tagline}}</h2>
+                <h3>{{"beerDetail.contributedBy" | translate}} <span style="color: darkred">{{contributedBy}}</span></h3>
+            </div>
         </div>
 
-        <div>
-            <h1>{{name}}</h1>
-            <h2>{{tagline}}</h2>
-            <h3>{{"beerDetail.contributedBy" | translate}} <span style="color: darkred">{{contributedBy}}</span></h3>
+        <h3 translate>beerDetail.bestWith</h3>
+        <div class="foodPairing">
+            <div class="chip" *ngFor="let food of foodPairing">{{food}}</div>
         </div>
+
+        <h3>TR: Description</h3>
+        <p>{{beersService.selectedBeer.description}}</p>
+        <h3>TR: Tips</h3>
+        <p>{{beersService.selectedBeer.brewers_tips}}</p>
     </div>
 </mat-card>

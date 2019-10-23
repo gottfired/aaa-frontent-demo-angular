@@ -25,3 +25,17 @@ div.avatar {
     align-items: center;
     justify-content: center;
 }
+
+div.foodPairing {
+    display: flex;
+}
+
+div.chip {
+    background: lightseagreen;
+    color: white;
+    border-radius: 16px;
+    padding: 8px;
+    padding-right: 16px;
+    padding-left: 16px;
+    margin-right: 8px;
+}

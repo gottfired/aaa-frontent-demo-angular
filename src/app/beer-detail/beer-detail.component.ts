@@ -51,4 +51,8 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
     return this.beersService.selectedBeer.contributed_by;
   }
 
+  get foodPairing() {
+    return this.beersService.selectedBeer.food_pairing;
+  }
+
 }

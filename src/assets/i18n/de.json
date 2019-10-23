@@ -6,5 +6,6 @@
     "error.pageNotFound.title": "404 ...",
     "error.pageNotFound.description": "Tut mir leid, die Seite existiert nicht",
     "error.beerNotFound": "Bier nicht gefunden",
-    "beerDetail.contributedBy": "Eingetragen von:"
+    "beerDetail.contributedBy": "Eingetragen von:",
+    "beerDetail.bestWith": "Schmeckt am besten mit:"
 }
