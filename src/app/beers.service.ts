@@ -11,6 +11,7 @@ const USE_MOCK = true;
 })
 export class BeersService {
   beers: IBeer[];
+  selectedBeer?: IBeer;
 
   constructor(
     private http: HttpClient
@@ -39,5 +40,13 @@ export class BeersService {
       console.error('### Error getting beers', err);
       throw err;
     }
+  }
+
+  selectBeerById = async (beerId: number) => {
+    if (!this.beers) {
+      await this.getBeers();
+    }
+
+    this.selectedBeer = this.beers.find(entry => entry.id === beerId);
   }
 }

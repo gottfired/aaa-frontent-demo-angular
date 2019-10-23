@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BeersService } from '../beers.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-beer-detail',
@@ -13,20 +14,24 @@ export class BeerDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private beersService: BeersService
+    private beersService: BeersService,
+    private translateService: TranslateService
+
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     // Taken from here https://medium.com/@christo8989/angular-6-url-parameters-860db789db85
     this.beerId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
-    console.log('### beer', this.beerId);
+    await this.beersService.selectBeerById(this.beerId);
   }
 
   get details() {
-    if (this.beerId) {
+    if (this.beersService.selectedBeer) {
       return JSON.stringify(
-        this.beersService.beers.find(entry => entry.id === this.beerId), null, 4
+        this.beersService.selectedBeer, null, 4
       );
+    } else {
+      return this.translateService.instant('error.beerNotFound');
     }
   }
 

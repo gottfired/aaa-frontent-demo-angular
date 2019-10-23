@@ -4,5 +4,6 @@
     "nav.beers": "Bier-Liste",
     "nav.beer": "Bier-Details",
     "error.pageNotFound.title": "404 ...",
-    "error.pageNotFound.description": "Tut mir leid, die Seite existiert nicht"
+    "error.pageNotFound.description": "Tut mir leid, die Seite existiert nicht",
+    "error.beerNotFound": "Bier nicht gefunden"
 }
