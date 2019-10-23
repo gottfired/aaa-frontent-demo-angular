@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BeersService } from '../beers.service';
 import { TranslateService } from '@ngx-translate/core';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { GlobalUiService } from '../global-ui.service';
 
 @Component({
   selector: 'app-beer-detail',
@@ -15,14 +17,17 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private beersService: BeersService,
-    private translateService: TranslateService
-
+    private translateService: TranslateService,
+    private globalUiSrvice: GlobalUiService
   ) { }
 
   async ngOnInit() {
     // Taken from here https://medium.com/@christo8989/angular-6-url-parameters-860db789db85
     this.beerId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     await this.beersService.selectBeerById(this.beerId);
+    if (!this.beersService.selectedBeer) {
+      this.globalUiSrvice.showError(this.translateService.instant('error.beerNotFound'));
+    }
   }
 
   ngOnDestroy() {

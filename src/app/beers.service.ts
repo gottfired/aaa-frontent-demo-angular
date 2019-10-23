@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IBeer } from './types/Beer';
+import { GlobalUiService } from './global-ui.service';
 
 
 
@@ -14,7 +15,8 @@ export class BeersService {
   selectedBeer?: IBeer;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private globalUi: GlobalUiService
   ) { }
 
 
@@ -38,6 +40,7 @@ export class BeersService {
       console.log('### Loaded beers', this.beers);
     } catch (err) {
       console.error('### Error getting beers', err);
+      this.globalUi.showError('Error getting beers');
       throw err;
     }
   }
