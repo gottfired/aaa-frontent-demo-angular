@@ -35,14 +35,20 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
     this.beersService.deselectBeer();
   }
 
-  get details() {
-    if (this.beersService.selectedBeer) {
-      return JSON.stringify(
-        this.beersService.selectedBeer, null, 4
-      );
-    } else {
-      return this.translateService.instant('error.beerNotFound');
-    }
+  get imageUrl() {
+    return this.beersService.selectedBeer.image_url;
+  }
+
+  get name() {
+    return this.beersService.selectedBeer.name;
+  }
+
+  get tagline() {
+    return this.beersService.selectedBeer.tagline;
+  }
+
+  get contributedBy() {
+    return this.beersService.selectedBeer.contributed_by;
   }
 
 }

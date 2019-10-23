@@ -1,4 +1,13 @@
 <mat-card>
-    <p>Details für Bier mit der ID: {{beerId}}</p>
-    <pre>{{details}}</pre>
+    <div class="header">
+        <div class="avatar">
+            <img class="avatar" src="{{imageUrl}}" />
+        </div>
+
+        <div>
+            <h1>{{name}}</h1>
+            <h2>{{tagline}}</h2>
+            <h3>{{"beerDetail.contributedBy" | translate}} {{contributedBy}}</h3>
+        </div>
+    </div>
 </mat-card>

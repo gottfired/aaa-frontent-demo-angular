@@ -1,0 +1,27 @@
+div.header {
+    display: flex;
+    align-items: center;
+}
+
+img.avatar {
+    width: 80%;
+    height: 80%;
+
+    // fit image -> same as background cover
+    object-fit: contain;
+}
+
+div.avatar {
+    background: #ffe0e0;
+    
+    width: 160px;
+    height: 160px;
+
+    border-radius: 20%;
+    margin-right: 32px;
+
+    // For centering the image hor and ver
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
