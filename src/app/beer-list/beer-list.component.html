@@ -1,6 +1,6 @@
 <mat-card>
     <mat-nav-list>
-        <mat-list-item *ngFor="let beer of beers" (click)="selected(beer)">
+        <mat-list-item *ngFor="let beer of beersService.beers" (click)="selected(beer)">
             <h3 matLine>{{beer.name}}</h3>
             <p matLine>
                 {{beer.tagline}}

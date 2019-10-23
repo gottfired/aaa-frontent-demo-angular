@@ -1,0 +1,43 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { IBeer } from './types/Beer';
+
+
+
+const USE_MOCK = true;
+
+@Injectable({
+  providedIn: 'root'
+})
+export class BeersService {
+  beers: IBeer[];
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
+
+  getBeers = async () => {
+    try {
+
+      let res;
+      if (USE_MOCK) {
+        res = await this.http.get('assets/beers.json').toPromise();
+      } else {
+        res = await this.http.get('https://api.punkapi.com/v2/beers').toPromise();
+      }
+
+      this.beers = res as any;
+
+      // Sort alphabetically
+      this.beers = this.beers.sort((lhs, rhs) => {
+        return lhs.name > rhs.name ? 1 : -1;
+      });
+
+      console.log('### Loaded beers', this.beers);
+    } catch (err) {
+      console.error('### Error getting beers', err);
+      throw err;
+    }
+  }
+}
