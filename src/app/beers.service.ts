@@ -49,4 +49,8 @@ export class BeersService {
 
     this.selectedBeer = this.beers.find(entry => entry.id === beerId);
   }
+
+  deselectBeer() {
+    this.selectedBeer = undefined;
+  }
 }
