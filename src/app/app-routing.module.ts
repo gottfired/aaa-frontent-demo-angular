@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { FeedComponent } from './feed/feed.component';
+import { RouterModule, Routes } from '@angular/router';
+import { BeerListComponent } from './beer-list/beer-list.component';
 import { MainComponent } from './main/main.component';
 
 
 const routes: Routes = [
   { path: '', component: MainComponent, pathMatch: 'full' },
-  { path: 'feed', component: FeedComponent },
+  { path: 'beers', component: BeerListComponent },
 ];
 
 @NgModule({

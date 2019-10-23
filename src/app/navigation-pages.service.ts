@@ -13,8 +13,8 @@ export class NavigationPagesService {
       title: 'nav.home'
     },
     {
-      link: '/feed',
-      title: 'nav.feed'
+      link: '/beers',
+      title: 'nav.beers'
     }
   ];
 }

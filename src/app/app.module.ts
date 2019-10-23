@@ -9,10 +9,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContentContainerComponent } from './content-container/content-container.component';
-import { FeedComponent } from './feed/feed.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { MaterialModule } from './material/material.module';
+import { BeerListComponent } from './beer-list/beer-list.component';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -25,10 +25,10 @@ registerLocaleData(localeDe, 'de');
 @NgModule({
   declarations: [
     AppComponent,
-    FeedComponent,
     MainComponent,
     HeaderComponent,
     ContentContainerComponent,
+    BeerListComponent,
   ],
   imports: [
     BrowserModule,
