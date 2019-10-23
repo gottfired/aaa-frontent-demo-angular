@@ -1,5 +1,5 @@
 <mat-card>
-    <div class="header">
+    <div *ngIf="beersService.selectedBeer" class="header">
         <div class="avatar">
             <img class="avatar" src="{{imageUrl}}" />
         </div>
@@ -7,7 +7,7 @@
         <div>
             <h1>{{name}}</h1>
             <h2>{{tagline}}</h2>
-            <h3>{{"beerDetail.contributedBy" | translate}} {{contributedBy}}</h3>
+            <h3>{{"beerDetail.contributedBy" | translate}} <span style="color: darkred">{{contributedBy}}</span></h3>
         </div>
     </div>
 </mat-card>

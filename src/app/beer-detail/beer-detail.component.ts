@@ -16,7 +16,7 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private beersService: BeersService,
+    public beersService: BeersService,
     private translateService: TranslateService,
     private globalUiSrvice: GlobalUiService
   ) { }
