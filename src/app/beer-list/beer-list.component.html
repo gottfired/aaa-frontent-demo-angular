@@ -1,1 +1,13 @@
-<p>beer-list works!</p>
+<mat-card>
+    <mat-nav-list>
+        <mat-list-item *ngFor="let beer of beers">
+            <h3 matLine>{{beer.name}}</h3>
+            <p matLine>
+                {{beer.tagline}}
+            </p>
+            <p matLine>
+                {{beer.description}}
+            </p>
+        </mat-list-item>
+    </mat-nav-list>
+</mat-card>

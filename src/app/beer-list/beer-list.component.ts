@@ -33,6 +33,12 @@ export class BeerListComponent implements OnInit {
       }
 
       this.beers = res as any;
+
+      // Sort alphabetically
+      this.beers = this.beers.sort((lhs, rhs) => {
+        return lhs.name > rhs.name ? 1 : -1;
+      });
+
       console.log('### Loaded beers', this.beers);
     } catch (err) {
       console.error('### Error getting beers', err);
