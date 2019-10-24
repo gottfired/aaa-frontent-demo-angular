@@ -10,21 +10,15 @@ import { IBeer } from '../types/Beer';
 })
 export class MainComponent implements OnInit {
 
-  secondsSinceStart = 0;
-
   constructor(
     public beersService: BeersService,
     private router: Router
-  ) { }
-
-  incrementTimer = () => {
-    // console.log('this =', this);
-    this.secondsSinceStart++;
-    setTimeout(this.incrementTimer, 1000);
+  ) {
   }
 
-  ngOnInit() {
-    // this.incrementTimer();
+
+  async ngOnInit() {
+    await this.beersService.getBeers();
   }
 
   get favorites() {
