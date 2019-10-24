@@ -23,11 +23,13 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     // Taken from here https://medium.com/@christo8989/angular-6-url-parameters-860db789db85
-    this.beerId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
-    await this.beersService.selectBeerById(this.beerId);
-    if (!this.beersService.selectedBeer) {
-      this.globalUiSrvice.showError(this.translateService.instant('error.beerNotFound'));
-    }
+    this.route.params.subscribe(async routeParams => {
+      this.beerId = Number(routeParams.id);
+      await this.beersService.selectBeerById(this.beerId);
+      if (!this.beersService.selectedBeer) {
+        this.globalUiSrvice.showError(this.translateService.instant('error.beerNotFound'));
+      }
+    });
   }
 
   ngOnDestroy() {
