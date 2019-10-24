@@ -33,6 +33,7 @@
             <mat-form-field appearance="outline">
                 <mat-label>Mein Kommentar</mat-label>
                 <input matInput formControlName="comment" />
+                <mat-error *ngIf="maxLengthFailed" translate>Max. 35 Zeichen</mat-error>
             </mat-form-field>
             <button mat-raised-button color="primary" style="margin-left: 16px;" (click)="onSubmit()">Senden</button>
         </form>

@@ -15,7 +15,7 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
   beerId: number;
 
   formGroup = new FormGroup({
-    comment: new FormControl(''),
+    comment: new FormControl('', [Validators.maxLength(35)]),
   });
 
   constructor(
@@ -86,8 +86,14 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
     return this.beersService.isLikedBeer(this.beerId) ? 'Gefällt mir' : '';
   }
 
+  get maxLengthFailed() {
+    return this.formGroup.get('comment').invalid && this.formGroup.get('comment').errors.maxlength;
+  }
+
   onSubmit = () => {
-    console.log('### comment', this.formGroup.value);
+    if (this.formGroup.valid) {
+      console.log('### comment', this.formGroup.value.comment);
+    }
   }
 }
 
