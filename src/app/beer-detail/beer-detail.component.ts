@@ -58,11 +58,16 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
   }
 
   onNext = () => {
-    this.router.navigate(['/beer', (this.beerId + 1) % this.beersService.beers.length]);
+    const next = Math.max(1, (this.beerId + 1) % (this.beersService.beers.length + 1));
+    this.router.navigate(['/beer', next]);
   }
 
   onPrevious = () => {
-    this.router.navigate(['/beer', (this.beerId - 1) % this.beersService.beers.length]);
+    let previous = (this.beerId - 1) % this.beersService.beers.length;
+    if (previous <= 0) {
+      previous = this.beersService.beers.length;
+    }
+    this.router.navigate(['/beer', previous]);
   }
 }
 
