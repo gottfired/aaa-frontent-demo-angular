@@ -17,6 +17,7 @@ import { BeerDetailComponent } from './beer-detail/beer-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
 import { CacheWipeConfirmationComponent } from './cache-wipe-confirmation/cache-wipe-confirmation.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -44,6 +45,7 @@ registerLocaleData(localeDe, 'de');
     MaterialModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

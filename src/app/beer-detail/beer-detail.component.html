@@ -27,6 +27,15 @@
         <p>{{beersService.selectedBeer.description}}</p>
         <h3>TR: Tips</h3>
         <p>{{beersService.selectedBeer.brewers_tips}}</p>
+
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Mein Kommentar</mat-label>
+                <input matInput formControlName="comment" />
+            </mat-form-field>
+            <button mat-raised-button color="primary" style="margin-left: 16px;" (click)="onSubmit()">Senden</button>
+        </form>
     </div>
 </mat-card>
 

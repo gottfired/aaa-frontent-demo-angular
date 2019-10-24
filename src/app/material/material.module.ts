@@ -7,7 +7,9 @@ import {
   MatSidenavModule,
   MatListModule,
   MatSnackBarModule,
-  MatDialogModule
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
 } from '@angular/material';
 
 const usedModules = [
@@ -18,7 +20,9 @@ const usedModules = [
   MatSidenavModule,
   MatListModule,
   MatSnackBarModule,
-  MatDialogModule
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule
 ];
 
 @NgModule({

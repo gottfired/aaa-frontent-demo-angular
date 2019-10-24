@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { BeersService } from '../services/beers.service';
 import { GlobalUiService } from '../services/global-ui.service';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-beer-detail',
@@ -12,6 +13,10 @@ import { GlobalUiService } from '../services/global-ui.service';
 export class BeerDetailComponent implements OnInit, OnDestroy {
 
   beerId: number;
+
+  formGroup = new FormGroup({
+    comment: new FormControl(''),
+  });
 
   constructor(
     private route: ActivatedRoute,
@@ -79,6 +84,10 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
   }
   get likeLabel() {
     return this.beersService.isLikedBeer(this.beerId) ? 'Gefällt mir' : '';
+  }
+
+  onSubmit = () => {
+    console.log('### comment', this.formGroup.value);
   }
 }
 
