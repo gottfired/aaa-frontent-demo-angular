@@ -8,6 +8,7 @@
             <p matLine>
                 {{beer.description}}
             </p>
+            <mat-icon *ngIf="beersService.isLikedBeer(beer.id)" style="color:red">thumb_up</mat-icon>
         </mat-list-item>
     </mat-nav-list>
 </mat-card>
