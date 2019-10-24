@@ -69,6 +69,17 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
     }
     this.router.navigate(['/beer', previous]);
   }
+
+  toggleLike = () => {
+    this.beersService.toggleLike(this.beerId);
+  }
+
+  get likeColor() {
+    return this.beersService.isLikedBeer(this.beerId) ? 'red' : '#ccc';
+  }
+  get likeLabel() {
+    return this.beersService.isLikedBeer(this.beerId) ? 'Gefällt mir' : '';
+  }
 }
 
 

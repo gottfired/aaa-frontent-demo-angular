@@ -4,12 +4,18 @@
             <div class="avatar">
                 <img class="avatar" src="{{imageUrl}}" />
             </div>
-
             <div>
                 <h1>{{name}}</h1>
                 <h2>{{tagline}}</h2>
                 <h3>{{"beerDetail.contributedBy" | translate}} <span style="color: darkred">{{contributedBy}}</span></h3>
             </div>
+        </div>
+
+        <div style="margin-top: 14px; display: flex; align-items: center;">
+            <button mat-icon-button class="likeButton" (click)="toggleLike()">
+                <mat-icon [style.color]="likeColor">thumb_up</mat-icon>
+            </button>
+            <div class="likeLabel" [style.color]="likeColor">{{likeLabel}}</div>
         </div>
 
         <h3 translate>beerDetail.bestWith</h3>

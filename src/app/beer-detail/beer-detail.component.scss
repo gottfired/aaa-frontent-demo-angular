@@ -56,6 +56,14 @@ div.fabContainer {
     box-sizing: border-box;
 }
 
+button.likeButton {
+    transform: scale(1.4);
+}
+
+div.likeLabel {
+    margin-left: 8px;
+    font-size: 20px;
+}
 
 @media only screen and (min-width: 800px) {
     div.avatar {

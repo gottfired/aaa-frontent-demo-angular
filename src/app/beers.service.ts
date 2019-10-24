@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IBeer } from './types/Beer';
 import { GlobalUiService } from './global-ui.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 async function sleep(milliseconds: number) {
   return new Promise(resolve => {
@@ -17,6 +18,7 @@ const USE_MOCK = true;
 export class BeersService {
   beers: IBeer[];
   selectedBeer?: IBeer;
+  likedBeers: number[] = [];
 
   constructor(
     private http: HttpClient,
@@ -66,5 +68,18 @@ export class BeersService {
 
   deselectBeer() {
     this.selectedBeer = undefined;
+  }
+
+  isLikedBeer(beerId: number) {
+    return this.likedBeers.indexOf(beerId) >= 0;
+  }
+
+  toggleLike(beerId: number) {
+    const index = this.likedBeers.indexOf(beerId);
+    if (index >= 0) {
+      this.likedBeers.splice(index, 1);
+    } else {
+      this.likedBeers.push(beerId);
+    }
   }
 }
