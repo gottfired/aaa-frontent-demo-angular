@@ -6,6 +6,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 })
 export class GlobalUiService {
 
+  isLoading = false;
 
   constructor(
     private snackBar: MatSnackBar,

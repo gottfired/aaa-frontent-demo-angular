@@ -3,7 +3,11 @@ import { Injectable } from '@angular/core';
 import { IBeer } from './types/Beer';
 import { GlobalUiService } from './global-ui.service';
 
-
+async function sleep(milliseconds: number) {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(), milliseconds);
+  });
+}
 
 const USE_MOCK = true;
 
@@ -22,6 +26,7 @@ export class BeersService {
 
   getBeers = async () => {
     try {
+      this.globalUi.isLoading = true;
 
       let res;
       if (USE_MOCK) {
@@ -30,7 +35,12 @@ export class BeersService {
         res = await this.http.get('https://api.punkapi.com/v2/beers').toPromise();
       }
 
+      // Fake slow network
+      await sleep(500);
+
       this.beers = res as any;
+
+      this.globalUi.isLoading = false;
 
       // Sort alphabetically
       this.beers = this.beers.sort((lhs, rhs) => {
@@ -40,6 +50,7 @@ export class BeersService {
       console.log('### Loaded beers', this.beers);
     } catch (err) {
       console.error('### Error getting beers', err);
+      this.globalUi.isLoading = false;
       this.globalUi.showError('Error getting beers');
       throw err;
     }
