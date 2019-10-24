@@ -18,7 +18,7 @@ const USE_MOCK = true;
 export class BeersService {
   beers: IBeer[];
   selectedBeer?: IBeer;
-  likedBeers: number[] = [];
+  likedBeerIDs: number[] = [];
 
   constructor(
     private http: HttpClient,
@@ -71,15 +71,19 @@ export class BeersService {
   }
 
   isLikedBeer(beerId: number) {
-    return this.likedBeers.indexOf(beerId) >= 0;
+    return this.likedBeerIDs.indexOf(beerId) >= 0;
   }
 
   toggleLike(beerId: number) {
-    const index = this.likedBeers.indexOf(beerId);
+    const index = this.likedBeerIDs.indexOf(beerId);
     if (index >= 0) {
-      this.likedBeers.splice(index, 1);
+      this.likedBeerIDs.splice(index, 1);
     } else {
-      this.likedBeers.push(beerId);
+      this.likedBeerIDs.push(beerId);
     }
+  }
+
+  get likedBeers() {
+    return this.likedBeerIDs.map(id => this.beers.find(b => b.id === id));
   }
 }

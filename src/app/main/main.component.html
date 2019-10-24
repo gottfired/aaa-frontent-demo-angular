@@ -1,4 +1,20 @@
 <!-- mat-card won't work without module import!! -->
 <mat-card>
-    <h1>Angular Demo App</h1>
+    <h1>Meine Lieblingsbiere</h1>
+
+    <mat-nav-list *ngIf="favorites.length > 0">
+        <mat-list-item *ngFor="let beer of favorites" (click)="selected(beer)">
+            <h3 matLine>{{beer.name}}</h3>
+            <p matLine>
+                {{beer.tagline}}
+            </p>
+            <p matLine>
+                {{beer.description}}
+            </p>
+            <mat-icon style="color:red">thumb_up</mat-icon>
+        </mat-list-item>
+    </mat-nav-list>
+
+    <h2 *ngIf="favorites.length === 0">... noch kein Bier ausgewählt</h2>
+
 </mat-card>

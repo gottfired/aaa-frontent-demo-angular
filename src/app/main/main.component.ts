@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BeersService } from '../beers.service';
+import { Router } from '@angular/router';
+import { IBeer } from '../types/Beer';
 
 @Component({
   selector: 'app-main',
@@ -9,7 +12,10 @@ export class MainComponent implements OnInit {
 
   secondsSinceStart = 0;
 
-  constructor() { }
+  constructor(
+    public beersService: BeersService,
+    private router: Router
+  ) { }
 
   incrementTimer = () => {
     // console.log('this =', this);
@@ -21,4 +27,11 @@ export class MainComponent implements OnInit {
     // this.incrementTimer();
   }
 
+  get favorites() {
+    return this.beersService.likedBeers;
+  }
+
+  selected = (beer: IBeer) => {
+    this.router.navigate(['/beer', beer.id]);
+  }
 }
