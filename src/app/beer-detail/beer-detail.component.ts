@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { BeersService } from '../beers.service';
-import { GlobalUiService } from '../global-ui.service';
+import { BeersService } from '../services/beers.service';
+import { GlobalUiService } from '../services/global-ui.service';
 
 @Component({
   selector: 'app-beer-detail',

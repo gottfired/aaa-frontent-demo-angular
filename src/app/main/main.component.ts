@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BeersService } from '../beers.service';
+import { BeersService } from '../services/beers.service';
 import { Router } from '@angular/router';
 import { IBeer } from '../types/Beer';
 

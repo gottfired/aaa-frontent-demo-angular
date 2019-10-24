@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationPagesService } from '../navigation-pages.service';
+import { NavigationPagesService } from '../services/navigation-pages.service';
 
 @Component({
   selector: 'app-content-container',

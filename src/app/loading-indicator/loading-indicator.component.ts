@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalUiService } from '../global-ui.service';
+import { GlobalUiService } from '../services/global-ui.service';
 
 @Component({
   selector: 'app-loading-indicator',

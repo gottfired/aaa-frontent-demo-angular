@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IBeer } from './types/Beer';
+import { IBeer } from '../types/Beer';
 import { GlobalUiService } from './global-ui.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { LocalStorageService } from './services/local-storage.service';
+import { LocalStorageService } from './local-storage.service';
 
 async function sleep(milliseconds: number) {
   return new Promise(resolve => {

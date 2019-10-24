@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { NavigationPagesService } from '../navigation-pages.service';
+import { NavigationPagesService } from '../services/navigation-pages.service';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
