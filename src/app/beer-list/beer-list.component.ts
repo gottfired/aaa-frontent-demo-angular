@@ -19,8 +19,7 @@ export class BeerListComponent implements OnInit {
     private router: Router
   ) { }
 
-  async ngOnInit() {
-    await this.beersService.getBeers();
+  ngOnInit() {
   }
 
   selected = (beer: IBeer) => {

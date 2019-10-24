@@ -17,8 +17,7 @@ export class MainComponent implements OnInit {
   }
 
 
-  async ngOnInit() {
-    await this.beersService.getBeers();
+  ngOnInit() {
   }
 
   get favorites() {

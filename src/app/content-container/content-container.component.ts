@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationPagesService } from '../services/navigation-pages.service';
+import { BeersService } from '../services/beers.service';
 
 @Component({
   selector: 'app-content-container',
@@ -10,10 +11,12 @@ export class ContentContainerComponent implements OnInit {
 
   constructor(
     public navigationPages: NavigationPagesService,
+    private beersService: BeersService
   ) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.beersService.getBeers();
   }
 
 }
