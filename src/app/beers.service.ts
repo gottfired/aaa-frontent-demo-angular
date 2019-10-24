@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { IBeer } from './types/Beer';
 import { GlobalUiService } from './global-ui.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { LocalStorageService } from './services/local-storage.service';
 
 async function sleep(milliseconds: number) {
   return new Promise(resolve => {
@@ -22,8 +23,11 @@ export class BeersService {
 
   constructor(
     private http: HttpClient,
-    private globalUi: GlobalUiService
-  ) { }
+    private globalUi: GlobalUiService,
+    private localStorage: LocalStorageService
+  ) {
+    this.likedBeerIDs = this.localStorage.getFavorites() || [];
+  }
 
 
   getBeers = async () => {
@@ -81,9 +85,15 @@ export class BeersService {
     } else {
       this.likedBeerIDs.push(beerId);
     }
+
+    this.localStorage.setFavorites(this.likedBeerIDs);
   }
 
   get likedBeers() {
-    return this.likedBeerIDs.map(id => this.beers.find(b => b.id === id));
+    if (this.beers) {
+      return this.likedBeerIDs.map(id => this.beers.find(b => b.id === id));
+    } else {
+      return [];
+    }
   }
 }
