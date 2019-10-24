@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Cache löschen</h1>
+<div mat-dialog-content>
+    <p>Willst du sicher alle lokalen Daten löschen?</p>
+</div>
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)="onClose(false)">Nö lieber nicht</button>
+    <button mat-button (click)="onClose(true)">Ja klar</button>
+</div>

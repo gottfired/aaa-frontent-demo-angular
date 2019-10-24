@@ -16,6 +16,7 @@ import { BeerListComponent } from './beer-list/beer-list.component';
 import { BeerDetailComponent } from './beer-detail/beer-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
+import { CacheWipeConfirmationComponent } from './cache-wipe-confirmation/cache-wipe-confirmation.component';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -35,6 +36,7 @@ registerLocaleData(localeDe, 'de');
     BeerDetailComponent,
     PageNotFoundComponent,
     LoadingIndicatorComponent,
+    CacheWipeConfirmationComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,7 @@ registerLocaleData(localeDe, 'de');
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CacheWipeConfirmationComponent]
 })
 export class AppModule { }

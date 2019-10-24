@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { NavigationPagesService } from '../services/navigation-pages.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material';
 import { BeersService } from '../services/beers.service';
+import { NavigationPagesService } from '../services/navigation-pages.service';
 
 @Component({
   selector: 'app-content-container',
@@ -8,6 +9,8 @@ import { BeersService } from '../services/beers.service';
   styleUrls: ['./content-container.component.scss']
 })
 export class ContentContainerComponent implements OnInit {
+
+  @ViewChild('sidenav', { static: false }) sidenavRef: MatSidenav;
 
   constructor(
     public navigationPages: NavigationPagesService,
@@ -17,6 +20,13 @@ export class ContentContainerComponent implements OnInit {
 
   async ngOnInit() {
     await this.beersService.getBeers();
+  }
+
+  onClick = (page) => {
+    this.sidenavRef.close();
+    if (page.onClick) {
+      page.onClick();
+    }
   }
 
 }

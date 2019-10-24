@@ -7,5 +7,6 @@
     "error.pageNotFound.description": "Tut mir leid, die Seite existiert nicht",
     "error.beerNotFound": "Bier nicht gefunden",
     "beerDetail.contributedBy": "Eingetragen von:",
-    "beerDetail.bestWith": "Schmeckt am besten mit:"
+    "beerDetail.bestWith": "Schmeckt am besten mit:",
+    "nav.wipe": "Cache löschen"
 }

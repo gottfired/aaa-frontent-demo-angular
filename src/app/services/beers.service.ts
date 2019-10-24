@@ -95,4 +95,14 @@ export class BeersService {
       return [];
     }
   }
+
+  async clearLocalData() {
+    // Clear everything
+    this.localStorage.cleanAll();
+    this.selectedBeer = undefined;
+    this.likedBeerIDs = [];
+
+    // Now reload
+    await this.getBeers();
+  }
 }
