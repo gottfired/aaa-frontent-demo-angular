@@ -14,8 +14,8 @@ img.avatar {
 div.avatar {
     background: #ffe0e0;
     
-    width: 160px;
-    height: 160px;
+    width: 100px;
+    height: 100px;
 
     border-radius: 20%;
     margin-right: 32px;
@@ -28,6 +28,7 @@ div.avatar {
 
 div.foodPairing {
     display: flex;
+    flex-wrap: wrap;
 }
 
 div.chip {
@@ -38,4 +39,24 @@ div.chip {
     padding-right: 16px;
     padding-left: 16px;
     margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+div.fabContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+@media only screen and (min-width: 800px) {
+    div.avatar {
+        width: 160px;
+        height: 160px;
+    }
 }

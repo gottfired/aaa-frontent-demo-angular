@@ -1,8 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BeersService } from '../beers.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { BeersService } from '../beers.service';
 import { GlobalUiService } from '../global-ui.service';
 
 @Component({
@@ -16,6 +15,7 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     public beersService: BeersService,
     private translateService: TranslateService,
     private globalUiSrvice: GlobalUiService
@@ -55,4 +55,14 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
     return this.beersService.selectedBeer.food_pairing;
   }
 
+  onNext = () => {
+    this.router.navigate(['/beer', (this.beerId + 1) % this.beersService.beers.length]);
+  }
+
+  onPrevious = () => {
+    this.router.navigate(['/beer', (this.beerId - 1) % this.beersService.beers.length]);
+  }
 }
+
+
+

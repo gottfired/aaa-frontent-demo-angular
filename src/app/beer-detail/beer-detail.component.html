@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card style="margin-bottom: 50px;">
     <div *ngIf="beersService.selectedBeer">
         <div class="header">
             <div class="avatar">
@@ -23,3 +23,13 @@
         <p>{{beersService.selectedBeer.brewers_tips}}</p>
     </div>
 </mat-card>
+
+
+<div class="fabContainer">
+    <button mat-fab color="primary" (click)="onPrevious()">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button mat-fab color="primary" (click)="onNext()">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+</div>
