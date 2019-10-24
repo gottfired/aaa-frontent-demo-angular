@@ -24,6 +24,9 @@ div.avatar {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    // Avoid shrinking on resize
+    flex-shrink: 0;
 }
 
 div.foodPairing {
