@@ -27,6 +27,7 @@ export class BeersService {
     private localStorage: LocalStorageService
   ) {
     this.likedBeerIDs = this.localStorage.getFavorites() || [];
+    this.comments = this.localStorage.getComments() || {};
   }
 
 
@@ -113,5 +114,7 @@ export class BeersService {
     } else {
       this.comments[beerId] = comment;
     }
+
+    this.localStorage.setComments(this.comments);
   }
 }

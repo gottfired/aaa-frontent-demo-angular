@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class LocalStorageService {
 
   private favoritesName = 'favorites';
+  private commentsName = 'comments';
 
   constructor() { }
 
@@ -20,6 +21,19 @@ export class LocalStorageService {
 
   clearFavorites() {
     localStorage.removeItem(this.favoritesName);
+  }
+
+  setComments(comments: any) {
+    localStorage.setItem(this.commentsName, JSON.stringify(comments));
+  }
+
+  getComments(): number[] {
+    const data = localStorage.getItem(this.commentsName);
+    return JSON.parse(data);
+  }
+
+  clearComments() {
+    localStorage.removeItem(this.commentsName);
   }
 
   cleanAll() {
