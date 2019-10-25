@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { IBeer } from '../types/Beer';
 import { GlobalUiService } from './global-ui.service';
 import { LocalStorageService } from './local-storage.service';
+import { BASE_URL, AuthService } from './auth.service';
 
 async function sleep(milliseconds: number) {
   return new Promise(resolve => {
@@ -24,7 +25,8 @@ export class BeersService {
   constructor(
     private http: HttpClient,
     private globalUi: GlobalUiService,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private authService: AuthService
   ) {
     this.likedBeerIDs = this.localStorage.getFavorites() || [];
     this.comments = this.localStorage.getComments() || {};
@@ -55,6 +57,10 @@ export class BeersService {
       });
 
       console.log('### Loaded beers', this.beers);
+
+      await this.getBeersInfo();
+
+
     } catch (err) {
       console.error('### Error getting beers', err);
       this.globalUi.isLoading = false;
@@ -79,7 +85,7 @@ export class BeersService {
     return this.likedBeerIDs.indexOf(beerId) >= 0;
   }
 
-  toggleLike(beerId: number) {
+  async toggleLike(beerId: number) {
     const index = this.likedBeerIDs.indexOf(beerId);
     if (index >= 0) {
       this.likedBeerIDs.splice(index, 1);
@@ -88,6 +94,8 @@ export class BeersService {
     }
 
     this.localStorage.setFavorites(this.likedBeerIDs);
+
+    await this.postData();
   }
 
   get likedBeers() {
@@ -108,7 +116,7 @@ export class BeersService {
     await this.getBeers();
   }
 
-  setComment(beerId: number, comment: string) {
+  async setComment(beerId: number, comment: string) {
     if (!comment) {
       delete this.comments[beerId];
     } else {
@@ -116,5 +124,56 @@ export class BeersService {
     }
 
     this.localStorage.setComments(this.comments);
+
+    await this.postData();
   }
+
+  postData = async () => {
+    if (!this.authService.isAuthenticated) {
+      return;
+    }
+
+    console.log('### postData');
+
+    try {
+      this.globalUi.isLoading = true;
+      const res = await this.http.patch(BASE_URL + '/app/v1/user/profile', {
+        data: {
+          commentsMap: this.comments,
+          likedBeerIds: this.likedBeerIDs
+        }
+      }, {
+        headers: {
+          Authorization: 'Bearer ' + this.authService.credentials.accessToken,
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }).toPromise();
+
+      console.log('### postData', res);
+
+      this.globalUi.isLoading = false;
+    } catch (err) {
+      this.globalUi.isLoading = false;
+      this.globalUi.showError('Post data error ' + err);
+    }
+  }
+
+  getBeersInfo = async () => {
+    if (!this.authService.isAuthenticated) {
+      return;
+    }
+
+    try {
+      this.globalUi.isLoading = true;
+      const res = await this.http.get(BASE_URL + '/app/v1/beers-info').toPromise();
+      this.globalUi.isLoading = false;
+      console.log('### getBeersInfo', res);
+    } catch (err) {
+      this.globalUi.isLoading = false;
+      this.globalUi.showError('Get beers info ' + err);
+    }
+  }
+
 }
+

@@ -86,8 +86,8 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
     this.router.navigate(['/beer', previous]);
   }
 
-  toggleLike = () => {
-    this.beersService.toggleLike(this.beerId);
+  toggleLike = async () => {
+    await this.beersService.toggleLike(this.beerId);
   }
 
   get likeColor() {
@@ -106,10 +106,10 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
   }
 
 
-  onSubmit = () => {
+  onSubmit = async () => {
     if (this.formGroup.valid) {
       console.log('### comment', this.formGroup.value.comment);
-      this.beersService.setComment(this.beerId, this.formGroup.value.comment);
+      await this.beersService.setComment(this.beerId, this.formGroup.value.comment);
       this.formGroup.get('comment').setValue('');
     } else {
       console.log('### validation error', this.formGroup.get('comment').errors);

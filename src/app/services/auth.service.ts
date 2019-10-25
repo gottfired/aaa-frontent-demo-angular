@@ -4,7 +4,7 @@ import { GlobalUiService } from './global-ui.service';
 import { LocalStorageService } from './local-storage.service';
 
 
-const BASE_URL = 'https://aaa-backend-demo-dev-public.allaboutapps.at';
+export const BASE_URL = 'https://aaa-backend-demo-dev-public.allaboutapps.at';
 
 interface ICredentials {
   accessToken: string;
@@ -49,8 +49,8 @@ export class AuthService {
       this.globalUi.isLoading = false;
       this.globalUi.showError('Login error ' + err);
     }
-
   }
+
 
   get isAuthenticated() {
     return !!this.credentials;
