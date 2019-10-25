@@ -1,42 +1,54 @@
 import { Injectable } from '@angular/core';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
 
-  private favoritesName = 'favorites';
-  private commentsName = 'comments';
+  static favoritesName = 'favorites';
+  static commentsName = 'comments';
+  static credentialsName = 'credentials';
+
 
   constructor() { }
 
   setFavorites(ids: number[]) {
-    localStorage.setItem(this.favoritesName, JSON.stringify(ids));
+    localStorage.setItem(LocalStorageService.favoritesName, JSON.stringify(ids));
   }
 
   getFavorites(): number[] {
-    const data = localStorage.getItem(this.favoritesName);
+    const data = localStorage.getItem(LocalStorageService.favoritesName);
     return JSON.parse(data);
-  }
-
-  clearFavorites() {
-    localStorage.removeItem(this.favoritesName);
   }
 
   setComments(comments: any) {
-    localStorage.setItem(this.commentsName, JSON.stringify(comments));
+    localStorage.setItem(LocalStorageService.commentsName, JSON.stringify(comments));
   }
 
   getComments(): number[] {
-    const data = localStorage.getItem(this.commentsName);
+    const data = localStorage.getItem(LocalStorageService.commentsName);
     return JSON.parse(data);
   }
 
-  clearComments() {
-    localStorage.removeItem(this.commentsName);
+  // Generalized fuctions
+
+  set(name: string, value: any) {
+    localStorage.setItem(name, JSON.stringify(value));
+  }
+
+  clear(name: string) {
+    localStorage.removeItem(name);
+  }
+
+  get(name: string): any {
+    const data = localStorage.getItem(name);
+    return JSON.parse(data);
   }
 
   cleanAll() {
-    localStorage.clear();
+    this.clear(LocalStorageService.favoritesName);
+    this.clear(LocalStorageService.commentsName);
   }
 }

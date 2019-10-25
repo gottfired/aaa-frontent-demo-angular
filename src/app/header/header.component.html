@@ -4,8 +4,24 @@
             <mat-icon>menu</mat-icon>
         </button>
         <div style="flex:1;">{{title}}</div>
-        <div *ngFor="let page of navigationPages.publicPages">
-            <a class="headerLink" routerLink="{{page.link}}" (click)="page.onClick()" translate>{{page.title}}</a>
+        <div>
+            <div style="display:flex">
+                <div *ngFor="let page of navigationPages.publicPages">
+                    <a class="headerLink" routerLink="{{page.link}}" (click)="page.onClick()" translate>{{page.title}}</a>
+                </div>
+            </div>
+            <div *ngIf="authService.isAuthenticated" class="loginInfo">
+                Eingeloggt als: {{authService.credentials.accessToken.split("-")[0]}}
+            </div>
         </div>
+
+        <button
+            *ngIf="!authService.isAuthenticated"
+            mat-raised-button
+            color="primary"
+            style="margin-left: 16px"
+            (click)="onLogin()">
+            Login
+        </button>
     </div>
 </mat-toolbar>
