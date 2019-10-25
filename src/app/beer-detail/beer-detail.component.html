@@ -28,16 +28,19 @@
         <h3>TR: Tips</h3>
         <p>{{beersService.selectedBeer.brewers_tips}}</p>
 
-        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
+        <h3>Kommentare</h3>
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="outline">
                 <mat-label>Mein Kommentar</mat-label>
                 <input matInput formControlName="comment" />
                 <mat-error *ngIf="maxLengthFailed" translate>Max. 35 Zeichen</mat-error>
                 <mat-error *ngIf="leadingOrTrailingSpace" translate>Leerzeichen am Anfang oder Ende</mat-error>
             </mat-form-field>
-            <button mat-raised-button color="primary" style="margin-left: 16px;" (click)="onSubmit()">Senden</button>
+            <button mat-raised-button color="primary" style="margin-left: 16px;" type="submit">Senden</button>
         </form>
+
+        <div>{{comment}}</div>
     </div>
 </mat-card>
 

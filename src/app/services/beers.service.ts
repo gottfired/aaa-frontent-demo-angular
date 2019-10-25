@@ -19,6 +19,7 @@ export class BeersService {
   beers: IBeer[];
   selectedBeer?: IBeer;
   likedBeerIDs: number[] = [];
+  comments: any = {};
 
   constructor(
     private http: HttpClient,
@@ -104,5 +105,13 @@ export class BeersService {
 
     // Now reload
     await this.getBeers();
+  }
+
+  setComment(beerId: number, comment: string) {
+    if (!comment) {
+      delete this.comments[beerId];
+    } else {
+      this.comments[beerId] = comment;
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { BeersService } from '../services/beers.service';
@@ -109,9 +109,15 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
   onSubmit = () => {
     if (this.formGroup.valid) {
       console.log('### comment', this.formGroup.value.comment);
+      this.beersService.setComment(this.beerId, this.formGroup.value.comment);
+      this.formGroup.get('comment').setValue('');
     } else {
       console.log('### validation error', this.formGroup.get('comment').errors);
     }
+  }
+
+  get comment() {
+    return this.beersService.comments[this.beerId] || '';
   }
 }
 
