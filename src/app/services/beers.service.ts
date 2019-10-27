@@ -161,6 +161,9 @@ export class BeersService {
       console.log('### postData', res);
 
       this.globalUi.isLoading = false;
+
+      await this.getBeersInfo();
+
     } catch (err) {
       this.globalUi.isLoading = false;
       this.globalUi.showError('Post data error ' + err);
