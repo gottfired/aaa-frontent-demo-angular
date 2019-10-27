@@ -9,7 +9,7 @@
                 {{beer.description}}
             </p>
             <mat-icon
-                *ngIf="!!beersService.beersInfo.globalLikes[beer.id]"
+                *ngIf="getLikeCount(beer.id)>0"
                 style="display:flex; align-items: center; padding-right:8px;"
                 [style.color]="getLikeColor(beer.id)">
                 thumb_up

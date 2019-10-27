@@ -31,7 +31,7 @@ export class BeerListComponent implements OnInit {
   }
 
   getLikeCount(beerId: number) {
-    return this.beersService.beersInfo.globalLikes[beerId];
+    return this.beersService.beersInfo && this.beersService.beersInfo.globalLikes[beerId];
   }
 
 }
