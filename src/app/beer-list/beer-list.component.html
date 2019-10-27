@@ -1,20 +1,8 @@
 <mat-card>
     <mat-nav-list>
-        <mat-list-item *ngFor="let beer of beersService.beers" (click)="selected(beer)">
-            <h3 matLine>{{beer.name}}</h3>
-            <p matLine>
-                {{beer.tagline}}
-            </p>
-            <p matLine>
-                {{beer.description}}
-            </p>
-            <mat-icon
-                *ngIf="getLikeCount(beer.id)>0"
-                style="display:flex; align-items: center; padding-right:8px;"
-                [style.color]="getLikeColor(beer.id)">
-                thumb_up
-                <span style="font-size:14px; margin-left: 8px;">{{getLikeCount(beer.id)}}</span>
-            </mat-icon>
-        </mat-list-item>
+        <app-beer-list-item
+            *ngFor="let beer of beersService.beers"
+            [beer]="beer"
+            (click)="selected(beer)"></app-beer-list-item>
     </mat-nav-list>
 </mat-card>

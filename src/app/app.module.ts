@@ -18,6 +18,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
 import { CacheWipeConfirmationComponent } from './cache-wipe-confirmation/cache-wipe-confirmation.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BeerListItemComponent } from './beer-list-item/beer-list-item.component';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -38,6 +39,7 @@ registerLocaleData(localeDe, 'de');
     PageNotFoundComponent,
     LoadingIndicatorComponent,
     CacheWipeConfirmationComponent,
+    BeerListItemComponent,
   ],
   imports: [
     BrowserModule,
