@@ -123,8 +123,9 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
     }
   }
 
-  get comment() {
-    return this.beersService.comments[this.beerId] || '';
+  get comments() {
+    return this.beersService.beersInfo &&
+      this.beersService.beersInfo.globalComments[this.beerId];
   }
 }
 

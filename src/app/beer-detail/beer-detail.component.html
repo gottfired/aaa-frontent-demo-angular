@@ -40,7 +40,11 @@
             <button mat-raised-button color="primary" style="margin-left: 16px;" type="submit">Senden</button>
         </form>
 
-        <div>{{comment}}</div>
+        <div *ngFor="let comment of comments">
+            <span style="color: darkred">{{comment.user.split("-")[0]}}: </span>
+            <span>{{comment.comment}}</span>
+        </div>
+
     </div>
 </mat-card>
 
