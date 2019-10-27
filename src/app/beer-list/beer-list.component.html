@@ -8,7 +8,13 @@
             <p matLine>
                 {{beer.description}}
             </p>
-            <mat-icon *ngIf="beersService.isLikedBeer(beer.id)" style="color:red">thumb_up</mat-icon>
+            <mat-icon
+                *ngIf="!!beersService.beersInfo.globalLikes[beer.id]"
+                style="display:flex; align-items: center; padding-right:8px;"
+                [style.color]="getLikeColor(beer.id)">
+                thumb_up
+                <span style="font-size:14px; margin-left: 8px;">{{getLikeCount(beer.id)}}</span>
+            </mat-icon>
         </mat-list-item>
     </mat-nav-list>
 </mat-card>

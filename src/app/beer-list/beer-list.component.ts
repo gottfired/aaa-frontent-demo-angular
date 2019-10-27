@@ -26,4 +26,12 @@ export class BeerListComponent implements OnInit {
     this.router.navigate(['/beer', beer.id]);
   }
 
+  getLikeColor(beerId: number) {
+    return this.beersService.isLikedBeer(beerId) ? 'red' : '#ccc';
+  }
+
+  getLikeCount(beerId: number) {
+    return this.beersService.beersInfo.globalLikes[beerId];
+  }
+
 }

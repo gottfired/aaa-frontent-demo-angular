@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IBeer } from '../types/Beer';
+import { IBeer, IBeersInfo } from '../types/Beer';
 import { GlobalUiService } from './global-ui.service';
 import { LocalStorageService } from './local-storage.service';
 import { BASE_URL, AuthService } from './auth.service';
+
+
 
 async function sleep(milliseconds: number) {
   return new Promise(resolve => {
@@ -18,9 +20,15 @@ const USE_MOCK = true;
 })
 export class BeersService {
   beers: IBeer[];
+
+  // Local data
   selectedBeer?: IBeer;
   likedBeerIDs: number[] = [];
   comments: any = {};
+
+  // Global data
+  beersInfo: IBeersInfo;
+
 
   constructor(
     private http: HttpClient,
@@ -166,9 +174,9 @@ export class BeersService {
 
     try {
       this.globalUi.isLoading = true;
-      const res = await this.http.get(BASE_URL + '/app/v1/beers-info').toPromise();
+      this.beersInfo = await this.http.get(BASE_URL + '/app/v1/beers-info').toPromise() as IBeersInfo;
       this.globalUi.isLoading = false;
-      console.log('### getBeersInfo', res);
+      console.log('### getBeersInfo', this.beersInfo);
     } catch (err) {
       this.globalUi.isLoading = false;
       this.globalUi.showError('Get beers info ' + err);

@@ -77,3 +77,17 @@ export interface IBeer {
     brewers_tips: string;
     contributed_by: string;
 }
+
+
+export interface IBeersInfo {
+    globalLikes: {
+        [id: string]: number // -> [id: string] = index signature
+    };
+
+    globalComments: {
+        [id: string]: {
+            user: string;
+            comment: string;
+        }[]
+    };
+}

@@ -93,8 +93,15 @@ export class BeerDetailComponent implements OnInit, OnDestroy {
   get likeColor() {
     return this.beersService.isLikedBeer(this.beerId) ? 'red' : '#ccc';
   }
+
   get likeLabel() {
-    return this.beersService.isLikedBeer(this.beerId) ? 'Gefällt mir' : '';
+    const likes = this.beersService.beersInfo.globalLikes[this.beerId];
+    let label = likes !== undefined ? likes.toString() + ' ' : '';
+    if (this.beersService.isLikedBeer(this.beerId)) {
+      label += 'Gefällt mir';
+    }
+
+    return label;
   }
 
   get maxLengthFailed() {
