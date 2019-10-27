@@ -30,7 +30,7 @@ export class NavigationPagesService {
       show: false,
       onClick: () => { }
     },
-    /*{
+    {
       title: 'nav.wipe',
       show: true,
       onClick: () => {
@@ -42,7 +42,7 @@ export class NavigationPagesService {
           // Handle any closing tasks here
         });
       }
-    }*/
+    }
   ];
 
   get publicPages() {

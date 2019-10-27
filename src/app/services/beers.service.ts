@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IBeer, IBeersInfo } from '../types/Beer';
+import { IBeer, IBeersInfo, IComments } from '../types/Beer';
+import { AuthService, BASE_URL } from './auth.service';
 import { GlobalUiService } from './global-ui.service';
 import { LocalStorageService } from './local-storage.service';
-import { BASE_URL, AuthService } from './auth.service';
 
 
 
@@ -24,7 +24,7 @@ export class BeersService {
   // Local data
   selectedBeer?: IBeer;
   likedBeerIDs: number[] = [];
-  comments: any = {};
+  comments: IComments = {};
 
   // Global data
   beersInfo: IBeersInfo;
@@ -68,6 +68,10 @@ export class BeersService {
 
       await this.getBeersInfo();
 
+      // Restore local data from profile
+      await this.authService.loadProfile();
+      this.likedBeerIDs = this.authService.userProfile.data.likedBeerIds;
+      this.comments = this.authService.userProfile.data.commentsMap;
 
     } catch (err) {
       console.error('### Error getting beers', err);
@@ -76,6 +80,8 @@ export class BeersService {
       throw err;
     }
   }
+
+
 
   selectBeerById = async (beerId: number) => {
     if (!this.beers) {
@@ -119,6 +125,7 @@ export class BeersService {
     this.localStorage.cleanAll();
     this.selectedBeer = undefined;
     this.likedBeerIDs = [];
+    this.comments = {};
 
     // Now reload
     await this.getBeers();

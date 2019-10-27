@@ -91,3 +91,6 @@ export interface IBeersInfo {
         }[]
     };
 }
+
+
+export interface IComments { [id: number]: string; }

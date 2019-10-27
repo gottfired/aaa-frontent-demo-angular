@@ -20,6 +20,15 @@ export class AuthService {
 
   credentials?: ICredentials;
 
+  userProfile: {
+    uid: string;
+    scope: string[];
+    data: {
+      likedBeerIds: number[],
+      commentsMap: { [id: number]: string; }
+    }
+  };
+
   constructor(
     private http: HttpClient,
     private globalUi: GlobalUiService,
@@ -52,8 +61,37 @@ export class AuthService {
   }
 
 
+
   get isAuthenticated() {
     return !!this.credentials;
+  }
+
+  loadProfile = async () => {
+
+    if (!this.isAuthenticated) {
+      return;
+    }
+
+    console.log('### getProfile');
+
+    try {
+      this.globalUi.isLoading = true;
+      this.userProfile = await this.http.get(BASE_URL + '/app/v1/user/profile', {
+        headers: {
+          Authorization: 'Bearer ' + this.credentials.accessToken,
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }).toPromise() as any;
+
+      console.log('### profile', this.userProfile);
+
+      this.globalUi.isLoading = false;
+
+    } catch (err) {
+      this.globalUi.isLoading = false;
+      this.globalUi.showError('Get profile error ' + err);
+    }
   }
 
 }

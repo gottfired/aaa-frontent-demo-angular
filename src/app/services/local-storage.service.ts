@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IComments } from '../types/Beer';
 
 
 
@@ -27,7 +28,7 @@ export class LocalStorageService {
     localStorage.setItem(LocalStorageService.commentsName, JSON.stringify(comments));
   }
 
-  getComments(): number[] {
+  getComments(): IComments {
     const data = localStorage.getItem(LocalStorageService.commentsName);
     return JSON.parse(data);
   }
@@ -50,5 +51,6 @@ export class LocalStorageService {
   cleanAll() {
     this.clear(LocalStorageService.favoritesName);
     this.clear(LocalStorageService.commentsName);
+    // DO NOT clear credentials
   }
 }

@@ -10,8 +10,8 @@
                     <a class="headerLink" routerLink="{{page.link}}" (click)="page.onClick()" translate>{{page.title}}</a>
                 </div>
             </div>
-            <div *ngIf="authService.isAuthenticated" class="loginInfo">
-                Eingeloggt als: {{authService.credentials.accessToken.split("-")[0]}}
+            <div *ngIf="authService.isAuthenticated && authService.userProfile" class="loginInfo">
+                Eingeloggt als: {{authService.userProfile.uid.split("-")[0]}}
             </div>
         </div>
 
