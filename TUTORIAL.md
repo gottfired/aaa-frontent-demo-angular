@@ -52,4 +52,31 @@
 * JS this is **NOT** what you are used to. (https://www.w3schools.com/js/js_this.asp)
 * Arrow functions: explain ```function f()```vs ```const f = ()=>{}``` and runtime vs compile time this binding. (https://www.w3schools.com/js/js_arrow_function.asp)
 
+# 5. tags/install-material-ui
+* What is Material Design? https://material.io/
+* We install by
+    * adding @angular/cdk and @angular/material to package.json
+    * import a theme in styles.scss (important, if not then components will look broken)
+* Alternative use ng add @angular/material (since Angular 6)
+* Now add a card to our main component (https://material.angular.io/components/card/overview)
+
+# 6. tags/header
+* Add a navigation bar using a toolbar (https://material.angular.io/components/toolbar/overview)
+* Topic: **SPAs and routing**, routerLink vs href.
+
+# 7. tags/burger
+* Responsive apps
+* Mobile first
+* Media queries
+* Material icons: (https://material.io/resources/icons/?style=baseline) = Rich set of ready made icons for apps.
+* Burger menu
+
+# 8. tags/sidenav
+* For mobile add a sidenav menu (https://material.angular.io/components/sidenav/overview)
+* Refactor pages into function to be used by header and sidenav
+
+
+
+    
+
 
