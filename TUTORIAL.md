@@ -13,8 +13,14 @@
 
 # 1. tags/after-scaffolding
 * **node** = runtime and interactive REPL (every even release is LTS)
-    * paradigm: single threaded async
+    * paradigm: single threaded async instead of one thread per network request.
+    * similar to browser console
+    * access to file system
+    * non blocking network requests lead to better performance than thread context switching
+    * downside: no vertical scaling, be careful to not block the main thread.
 * **npm** = node package manager. Node registry is the largest repository of all languages. Comparable to pip, gems, Maven, NuGet, CocoaPods, ...
+    * not constrained to backend, all JS packages are handled via npm.
+    * Alternative yarn (https://yarnpkg.com/lang/en/)
 * **ng** (Angular CLI) is a binary npm script used for managing Angular projects
     * Either install via npm install -g @angular/cli
     * Then scaffold a new project with ng new aaa-frontend-demo-angular
@@ -24,31 +30,43 @@
     * npx is a tool for executing binary npm packages without having to install them.
     * Advantage: You can work on different projects using different versions of ng without conflicting with global ng.
 * Anatomy of package.json
+* What is package-lock.json or yarn.lock?
 * After scaffolding start project with
     * npm install (or yarn)
     * npm start
+* Short excursion:
+    * ts-node: Typescript REPL. https://www.npmjs.com/package/ts-node
+    * Easiest way to quickly try out typescript
 
 # 2. tags/with-routes
 ## Routing
 * Angular modules: https://angular.io/guide/architecture-modules
     * Encapsulate code into modular packages
+    * Importing module imports everything a module exports
     * Different to JS/TS modules, where every module with its exports is a file
-        * Short excursion commonJS (= require) vs ES6 modules (= import)
+        * Short excursion commonJS (= require) vs ES6 modules (= import). TS uses ES6 syntax.
     * NgModules can be lazy loaded which is relevant for bigger apps
-    * Explain SPAs and time to first render
+    * &rarr; Explain SPAs and time to first render and why lazy loading is a good thing
         * isomorphic/universal apps via angular/universal or nextjs
         * solution for SEO and first page view, also slow/no script devices.
 * Define routes in the app's router module. (https://angular.io/guide/router#configuration)
 * Create components with ```ng generate component``` (or ```ng g c```) (https://angular.io/cli/generate#component)
     * Compare with the React functional way (```npx create-react-app aaa-frontend-demo-react --typescript```)
     * Add a feed and main component.
+* Short excursion: **SPAs and routing**, routerLink vs href.
 
 ## Fonts
 * Add a font "Source Sans Pro" in *styles.scss* and define it as global font. (https://fonts.google.com/)
 * *styles.scss* is our global stylesheet
+* Load fonts via link or as asset. (pros and cons).
+    * https://google-webfonts-helper.herokuapp.com/fonts
+* Attention: Font licenses. _Always_ make sure you own the license or the font is free.
 
 # 3. tags/lifecycle
 * Lifecycle methods: OnInit, OnDestroy are used to hook into events during a component's life cycle (https://angular.io/guide/lifecycle-hooks#lifecycle-sequence)
+    * Load resources
+    * Init data, attach listeners to dom events, routers, ...
+    * Free resources
 * Demonstrate {{stringInterpolation}} for data binding (https://angular.io/guide/template-syntax#interpolation-)
 
 # 4. tags/lifecycle-fixed
@@ -59,19 +77,23 @@
 * What is Material Design? https://material.io/
 * We install by
     * adding @angular/cdk and @angular/material to package.json
-    * import a theme in styles.scss (important, if not then components will look broken)
 * React: not built in, several alternatives (most popular is material ui).
-* Alternative use ng add @angular/material (since Angular 6)
-* Now add a card to our main component (https://material.angular.io/components/card/overview). Attention, html tag needs module import!
+* Now add a card to our main component (https://material.angular.io/components/card/overview).
+    * Attention: html tag needs module import!
+    * Attention: import a theme in styles.scss (important, if not then components will look broken)
+* New alternative: use ng add @angular/material (since Angular 6)
 
 # 6. tags/header
 * Add a navigation bar using a **toolbar** (https://material.angular.io/components/toolbar/overview)
 * Short overview of **flexbox** (https://css-tricks.com/snippets/css/a-guide-to-flexbox/), the swiss army knife of layout. (flex-grow:1 needs outer width).
-* Topic: **SPAs and routing**, routerLink vs href.
+    * It solves vertical centering! (https://devrant.com/rants/26154/haha, show demo)
 * CSS in Angular is isolated. We can reuse class names!
 
 # 7. tags/burger
-* Responsive apps
+* Responsive apps (not responsive: https://amazon.de)
+    * Good: responsive
+    * Ok: specific mobile site (amazon, facebook)
+    * Bad: no mobile support (https://dequeuniversity.com/library/responsive/1-non-responsive)
 * Mobile first
 * Media queries
 * Material icons: (https://material.io/resources/icons/?style=baseline) = Rich set of ready made icons for apps.
@@ -186,6 +208,9 @@
 * Reloading the page deletes our likes which is not very useful.
 * Options for persistence: https://mattwest.design/choosing-the-best-client-side-storage-technology-for-your-project/
 * We use localStorage in combination with JSON.stringify()
+* Why local storage? Persistence, offline functionality (e.g. currency converter that works offline)
+* To additionally make the site offline available (aka PWAs) use service workers (https://medium.com/@onejohi/offline-web-apps-using-local-storage-and-service-workers-5d40467117b9).
+
 
 # 21. tags/refactor-services
 * We have too many services &rarr; refactor into services folder
