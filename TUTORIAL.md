@@ -116,12 +116,13 @@
     * sidenav
     * sidenav content
 * Refactor to content-container component to match these requirements
-* Explain ```@Output``` events for triggering functionality in containing component.
+* Explain ```@Output``` events for triggering functionality in containing component to bind burger menu.
 
 # 10. tags/navigation-pages
 * Notice we use pages in header and content-container
 * Refactor into service (https://angular.io/guide/architecture-services)
-* Cool: Dependency Injection (https://angular.io/guide/architecture-services#dependency-injection-di)
+    * Data used by multiple components
+    * Cool: Dependency Injection (https://angular.io/guide/architecture-services#dependency-injection-di)
 
 # 11. tags/i18n
 * Our first external dependency
@@ -292,6 +293,7 @@ in accessibility scenarios.
 * Testing
     * E.g. entering a value into the comment will lead to updated state
     * or entering a wrong value will display error
+    * Mostly for testing logic
 * Developing for mobile
     * Using native controls for ```<select>``` or date pickers
     * OS versions (iOS vs Android &rarr; fragmentation)
